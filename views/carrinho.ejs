@@ -1,0 +1,105 @@
+
+<%- include ('header') %>
+<%- include ('nav') %>
+
+<section>
+    <article>
+        <div class="row">
+            <div id="carrinho" class="col-sm-7 mt-5 mb-5 text-center">
+                <table class="table text-white" id="listaCarrinho">
+                    <tr>
+                        <th><i class="fas fa-film"></i> Produto</th>
+                        <th><i class="fas fa-desktop"></i> Telas</th>
+                        <th><i class="fas fa-money-bill-wave"></i> Preço</th>
+                        <th></th>
+                    </tr>
+                    <% total = 0 
+                    carrinho.forEach((item) => { 
+                        total += parseFloat(item.valor)
+                    %>
+                    <tr>
+                        <td style="vertical-align:unset;">
+                            <img class="w-50 m-1 imagemCarrinho" src="../imgs/<%= item.imagem %>">
+                            <p class="font-italic"><%= item.titulo %></p>
+                        </td>
+                        <td style="vertical-align:unset;">
+                            <input class="form-control qtdtelas" id="qtdTelasfilme<%= item.filmes_id %>" type="number" min="1" max="5" value="1">
+                        </td>
+                        <td style="vertical-align:unset;">
+                            R$ <%= item.valor.replace('.', ',') %>
+                        </td>
+                        <td style="vertical-align:unset;">
+                            
+                            <button class="btn btn-sm btn-outline-danger btn-excluir" data-id="<%= item.carrinho_id %>"><i class="fas fa-trash-alt"></i></button>
+
+                        </td>
+                    </tr>
+                    <% }) %>
+
+                </table>
+                <div id="totalCarrinho" class="pt-3 pb-3 pl-3 pr-3 d-flex justify-content-between">
+                    <% if (carrinho.length > 0){ %>
+                    <p id="totalItens"><i class="fas fa-coins"></i> Total dos itens: R$ <span id="totalItensResult"><%= total.toFixed(2).replace('.', ',') %> </span></p>
+                    <button type="button" class="btn btn-info btn-sm bt-limparCarrinho" id="limparCarrinho"><i class="fas fa-trash-alt"></i> Limpar carrinho</button>
+                    <% }else{ %>
+                    <p id="carrinhoVazio" class="d-flex align-items-center">O carrinho está vazio.</p>
+                    <% } %>
+                </div>
+                
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
+                <h5 class="text-center">Resumo do Pedido</h5>
+                <div class="resumoPedido p-3 mt-3">
+                    <p><i class="fas fa-film"></i> <%= carrinho.length %> Produtos</p>
+                    <p><i class="fas fa-coins"></i> Total R$ <span id="valorTotal"><%= total.toFixed(2).replace('.',',') %></span> </p>
+                    <div>
+                        <label for="valor" class="mt-5">Tem cupom de desconto?</label>
+                        <br>
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="cupomDesconto"><i class="fas fa-tag"></i> </span>
+                            </div>
+                            <input type="text" id="cupom" name="valor" class="form-control" aria-describedby="cupomDesconto" placeholder="Insira o código aqui">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="container">
+                        <div class="row d-flex justify-content-between">
+                            <p class="col-sm-12" id="totalDesconto">Cupom aplicado!</p>
+                            <button id="calcularCupom" type="button" class="btn btn-sm btn-info mt-3 col-sm-2"><i class="fas fa-calculator"></i> </button>
+                            <button class="btn btn-sm btn-primary mt-3 col-sm-9"><i class="fas fa-wallet"></i> Continuar</button>
+                            <button class="btn btn-sm btn-secondary mt-3 col-sm-12"><a class="text-white" href="/"><i class="fas fa-plus"></i> Adicionar mais produtos</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 mb-4">
+            <div class="row wrap">
+                <div class="col-sm-4">
+                    <a href="/produtos">
+                        <img src="../imgs/<%= filme[11].imagem %>" class="imagens">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="/produtos">
+                        <img src="../imgs/<%= filme[18].imagem %>" class="imagens">
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="/produtos">
+                        <img src="../imgs/<%= filme[7].imagem %>" class="imagens">
+                    </a>
+                </div>
+            </div>
+         </div>
+
+    </article>
+</section>
+
+<script src="../js/carrinho_ejs.js"></script>
+<%- include ('footer') %>
+

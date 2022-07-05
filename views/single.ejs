@@ -1,0 +1,128 @@
+<%- include('header.ejs') %>
+<%- include('nav.ejs') %>
+
+<section class="container">
+    <article>
+        <div class="mt-5 mb-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center font-weight-bold text-capitalize mb-5">
+                        <%=galeria[0].titulo%> 
+                        <span>
+                            <h6 class="font-italic font-weight-light">(<%=galeria[0].genero%>, <%= galeria[0].Ano%>)</h6>
+                        </span>
+                    </h2>
+                    <div class="row">
+                        <div class="col-sm-12 d-flex justify-content-center mb-5">
+                            <iframe class="iframeSingle" width="800" height="448" src="<%=galeria[0].trailer%>"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-around">
+                            <h4 class="font-italic font-weight-bold">Sinopse</h4>
+                        </div>
+                            <div class="col-sm-12 d-flex justify-content-center">
+                            <p class="w-75"><%= galeria[0].sinopse%></p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <h6 class="font-italic font-weight-bold">Se interessou?
+                                <span class="font-weight-light">Adicione ao carrinho, compartilhe com amigos ou marque como favorito agora mesmo!</span>
+                            </h6>
+
+                            
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-center mt-3">
+                            <button type="button" class="btn btn-info btn-lg mr-3 btn-addCarrinho" data-id="<%=galeria[0].filmes_id%>">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            
+                            
+                            <button type="button" class="btn btn-info btn-lg mr-3" disabled>
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                            
+                            <button type="button" class="btn btn-info btn-lg mr-3 share-btn" >
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            
+                            <div class="share-options">
+                                <p class="title">Compartilhe com amigos!</p>
+                                <div class="social-media">
+                                    <a href="https://api.whatsapp.com/send?phone=+5521976159700&text=Confira%20o%20filme%20<%= galeria[0].titulo %>%20na%20StreamOn%20www.ge.globo.com" target="_blank">
+                                        <button class="social-media-btn">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </button>
+                                    </a>
+
+                                    <a href="https://twitter.com/intent/tweet?text=Confira%20o%20filme%20<%= galeria[0].titulo %>%20na%20StreamOn%20www.ge.globo.com" target="_blank">
+                                        <button class="social-media-btn" style="background: #1DA1F2;"><i class="fab fa-twitter"></i>
+                                        </button>
+                                    </a>
+
+                                    <button class="social-media-btn" disabled><i class="fab fa-facebook-f"></i></button>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row wrap mt-5">
+            <div class="col-sm-12 mb-5">
+                <h3>Conheça outros títulos</h3>
+            </div>
+            <div class="col-sm-4">
+                <a href="produtos.html">
+                    <img src="../imgs/filme17.jpeg" class="imagens w-100">
+                </a>
+            </div>
+
+            <div class="col-sm-4">
+                <a href="produtos.html">
+                    <img src="../imgs/filme15.jpeg" class="imagens w-100">
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="produtos.html">
+                    <img src="../imgs/filme20.jpeg" class="imagens w-100">
+                </a>
+            </div>
+        </div>
+
+    </article>
+
+</section>
+
+<script>
+    const shareBtn = document.querySelector('.share-btn')
+    const shareOptions = document.querySelector('.share-options')
+
+    shareBtn.addEventListener('click', () => {
+        shareOptions.classList.toggle('active')
+    })
+
+    $().ready(function () {
+        $('.btn-addCarrinho').click(function () {
+            let dataid = $(this).attr('data-id')
+            $.post("/add-carrinho", {
+                produto: dataid,
+                servico: 1,
+                usuarios: 1
+            },
+            function (data, status) {
+                alert("Filme adicionado ao carrinho.")
+            })
+        })
+    })
+</script>
+
+<script src="../js/controle.js"></script>
+
+<%- include('footer.ejs') %>

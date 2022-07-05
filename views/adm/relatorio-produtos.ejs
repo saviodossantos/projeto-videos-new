@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <title>StreamOn</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="/adm/">
+                        <img src="/imgs/SQUADONE.png" width="150">
+                    </a>
+                </div>
+                <div class="col-sm-7 d-flex justify-content-center">
+                    <img src="/imgs/Streaming.png" class="mt-2"width="210">
+                    </div>
+                    <section class="container">
+                    <table class="table text-white" id="listaCarrinho">
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Gênero</th>
+                            <th>Ano</th>
+                            <th>Sinopse</th>
+                            <th>Imagem</th>
+                            <th>Promo</th>
+                            <th>Valor</th>
+                            <th>trailer</th>
+                            <th></th>
+                        </tr>
+                        <% filmes.forEach((item)=>{ %>
+                        <tr>
+                            
+                                
+                                 
+                            <td style="vertical-align:unset;">
+                                <%= item.titulo %>
+                                 </td>
+                                <td style="vertical-align:unset;">
+                                    <%= item.genero %>
+                                </td>
+                                    <td style="vertical-align:unset;">
+                                        <%= item.Ano %>
+                                    </td>
+                            <td style="vertical-align:unset;">
+                                <p ><%=item.sinopse.substring(0,50)+"..."%></p>
+                            </td>
+                            <td style="vertical-align:unset;">
+                                <img src="/imgs/<%=item.imagem%>" class="w-50">
+                                </td>
+                                <td style="vertical-align:unset;">
+                                    <%= item.promo %>
+                            
+                               </td>
+                               <td style="vertical-align:unset;">
+                                <%= item.valor %>
+                                
+                           </td>
+                           <td style="vertical-align:unset;">
+                            <%= item.trailer %>
+                            
+                       </td>
+                       <td style="vertical-align:unset;">
+                       <button data-id="<%=item.filmes_id%>" class="btn btn-info bt-edit">Editar</button>
+                       </td>
+                       <td style="vertical-align:unset;">
+                        <button data-id="<%=item.filmes_id%>" class="btn btn-info btn-excluir">Excluir</button>
+                       <% }) %>
+                   </td>
+                    </table>
+                </div>
+            </header> 
+        </section>
+            <script>
+                $().ready(function(){
+                
+                $('.bt-edit').click(function(){
+                
+                let dataid=$(this).attr('data-id')
+                
+                        $.post("/upd-form-produto",
+                        {
+                        id:dataid
+                        },
+                        function(data,status)
+                        {
+                        location.href='/upd-form-produto'
+                        })
+                    })
+                    $('.btn-excluir').click(function () {
+        let dataid = $(this).attr('data-id')
+
+        $.post("/delete-produto", {
+            filmes_id: dataid
+        },
+            function (data, status) {
+                alert("produto exluído com sucesso !")
+                location.href = '/adm/relatorio-produtos'
+            }, 'json')
+    
+    
+})
+
+                })
+                </script>
+                        <footer class="mt-5">
+                            <p>&copy;2022 - Todos os direitos reservados</p>
+                        </footer>
+                    </body>
+                    </html>
