@@ -9,29 +9,26 @@
     "express-mysql-session": "^2.1.8",
     "jquery": "^3.6.0"
   },
-  "name": "projeto-videos",
+  "name": "projeto-videos-new",
   "description": "Projeto do Grupo 1 (Squad One) do programa Impulso Tec",
   "version": "1.0.0",
-  "main": "home.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "main": "index.js",
   "devDependencies": {
     "-": "^0.0.1",
     "nodemon": "^2.0.16"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index_ejs.js"
+    "start": "nodemon index"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gramedsant/projeto-videos.git"
+    "url": "git+https://github.com/saviodossantos/projeto-videos-new.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gramedsant/projeto-videos/issues"
+    "url": "https://github.com/saviodossantos/projeto-videos-new/issues"
   },
-  "homepage": "https://github.com/gramedsant/projeto-videos#readme"
+  "homepage": "https://github.com/saviodossantos/projeto-videos-new#readme"
 }
