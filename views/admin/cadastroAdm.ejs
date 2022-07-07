@@ -12,8 +12,8 @@
             <header class="text-center">
                 <div>
                     <div >
-                        <a href="../index.html">
-                            <img src="../LogotipoStreamOn.png" width="300">
+                        <a href="/adm/">
+                            <img src="/imgs/logo.png" width="150">
                         </a>
                     </div>
                     <div>                       
@@ -21,13 +21,13 @@
                 </div>
             </header>
             <nav class="text-center">
-                <a href="../index.html">Início</a>
-                <a href="../docs/produtos.html">Produtos</a>
-                <a href="../docs/contato.html">Contato</a>
+                <a href="/">Início</a>
+                <a href="/produto">Produtos</a>
+                <a href="/contato">Contato</a>
             </nav>
             <section class="container">
-                <h1 class="text-center mt-5 mb-5" > <i>Número 1 em streaming!</i></h1>
-                <form id="formContato" method="post" action="../index.html" class="w-50 mx-auto p-3 mt-4 mb-4"
+                
+                <form action="" method="post"  class="w-50 mx-auto p-3 mt-4 mb-4"
                 style="border:1px solid #ccc; border-radius:12px;">
             <fieldset>
                 <div>
@@ -35,33 +35,33 @@
                 </div>
                 <div class="form-group">
                     <label><b>Nome :</b></label>
-                    <input class="form-control" name="nomeContato" id="nomeUsuario" maxlength="50">
+                    <input class="form-control" name="nome" id="nome_adm" maxlength="50">
                 </div>
                 <div class="form-group">
                     <label><b>E-mail :</b></label>
-                    <input class="form-control" name="emailContato" id="emailUsuario" type="email" maxlength="50">
+                    <input class="form-control" name="email" id="email_adm" type="email" maxlength="50">
                 </div>
                 <div class="form-group">
                     <label><b>Telefone :</b></label required>
-                    <input class="form-control mb-3" type="text" placeholder="(99)9999-9999" name="telefoneContato" id="telefoneUsuario" maxlength="13" required>
+                    <input class="form-control mb-3" type="text" placeholder="(99)9999-9999" name="telefone" id="telefone_adm" maxlength="13" required>
                 <div>
                 <div class="form-group">
                     <label><b>Senha :</b></label required>
-                    <input class="form-control mb-3" name="senhaContato" id="senhalUsuario" type="password" maxlength="20" required>
+                    <input class="form-control mb-3" name="senha" id="senha_adm" type="password" maxlength="20" required>
                 <div>
                     
                 <div class="form-group">
                     <label><b>Confirme a sua Senha :</b></label required>
-                    <input class="form-control" name="confsenhaContato" id="confsenhaUsuario" type="password" maxlength="20" required>
+                    <input class="form-control" name="confsenha" id="confsenha_adm" type="password" maxlength="20" required>
                     
                     <div class="form-group">
                         <div>
-                        <label><b>Tipo de Usuario:</b></label required>
+                        <label><b>Tipo de Usuario:</b></label >
                         <select name="nível"class="input-group-text" id="inputGroup-sizing-default">
-                            <option value="1">adm</option>
+                            <option name="adm" id="adm">adm</option>
                             <option value="2">adm master</option>
                         </select>
-                    <button id="btContato" type="button" class="btn btn-info mt-4" maxlength="50"><b>Enviar</b></button>
+                    <button class="btn btn-info mt-4" maxlength="50"><b>Enviar</b></button>
                         
                 </div>
                   
@@ -74,5 +74,5 @@
             <p>&copy;2022 - Todos os direitos reservados. </p>
   </footer>
     </body>
-    <script src= "../js/cadastroAdm.js"></script>
+    <!--<script src= "/admin/js/cadastroAdm.js"></script>-->
 </html>
