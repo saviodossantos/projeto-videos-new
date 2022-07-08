@@ -13,22 +13,20 @@
 </head>
 
 <body>
+    <header class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <a href="/">
+                    <img src="/imgs/logo.png" width="150">
+                </a>
+            </div>
+            <div class="col-sm-8 d-flex justify-content-center">
 
-    <div class="container">
-        <header>
-            <div class="row">
-                <div class="col-sm-2">
-                    <a href="/">
-                        <img src="/imgs/logo.png" width="150">
-                    </a>
-                </div>
-                <div class="col-sm-8 d-flex justify-content-center">
+                <img class="mt-2" width="210" src="/imgs/Streaming.png">
 
-                    <img class="mt-2" width="210" src="/imgs/Streaming.png">
-
-                </div>
-                <div class="col-sm-2 mt-3 d-flex justify-content-end">
-                    <% if (info.user){ %>
+            </div>
+            <div class="col-sm-2 mt-3 d-flex justify-content-end">
+                <% if (info.user){ %>
                     <div class="navbar-text">
 
                         <span class="d-inline-block mr-3 font-weight-bold text-white">
@@ -36,19 +34,18 @@
                         </span>
 
                     </div>
-                    <!-- <span id="bemVindo"></span> -->
+                    <div class="nav-item mt-1">
+                        <a href="/logout" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                <% } else { %>
+                    <div class="nav-item">
+                        <a href="/login" class="btn btn-danger btn-sm col-sm-12"><i class="fas fa-sign-in-alt"></i>
+                            Entrar</a>
+                        <a href="/cadastro" class="btn btn-danger btn-sm mt-2 col-sm-12"><i class="fas fa-user"></i>
+                            Cadastre-se</a>
+                    </div>
 
-                    
-                        <div class="nav-item mt-1">
-                            <a href="/logout" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt"></i></a>
-                        </div>
-                    <% } else { %>
-                        <div class="nav-item">
-                            <a href="/login" class="btn btn-danger btn-sm col-sm-12"><i class="fas fa-sign-in-alt"></i> Entrar</a>
-                            <a href="/cadastro" class="btn btn-danger btn-sm mt-2 col-sm-12"><i class="fas fa-user"></i> Cadastre-se</a>
-                        </div>
+                <% } %>
 
-                    <% } %>
-
-                </div>
-        </header>
+            </div>
+    </header>

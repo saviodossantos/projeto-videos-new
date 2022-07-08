@@ -1,84 +1,91 @@
 <%- include ('header') %>
-    <%- include ('nav') %>
+<%- include ('nav') %>
 
-        <section>
-            <div class="row">
+<section class="container">
+    <article>
+        <div class="row">
 
-                <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
 
-                <div class="col-sm-8">
-                    <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner iframeSingle">
-                            <div class="carousel-item active">
-                                <iframe class="d-block w-100" width="800" height="448" marginheight="40"
-                                    marginwidth="100" src="" id="tra0" title="YouTube video player"
-                                    frameborder="0"></iframe>
-                            </div>
-                            <div class="carousel-item">
-                                <iframe class="d-block w-100" width="800" height="448" marginheight="40"
-                                    marginwidth="100" src="" id="tra1" title="YouTube video player" frameborder="0"></iframe>
-                            </div>
-                            <div class="carousel-item">
-                                <iframe class="d-block w-100" width="800" height="448" marginheight="40"
-                                    marginwidth="100" src="" id="tra2" title="YouTube video player" frameborder="0"></iframe>
-                            </div>
+            <div class="col-sm-8">
+                <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner iframeSingle">
+                        <div class="carousel-item active">
+                            <iframe class="d-block w-100" width="800" height="448" marginheight="40"
+                                marginwidth="100" src="" id="tra0" title="YouTube video player"
+                                frameborder="0"></iframe>
+                        </div>
+                        <div class="carousel-item">
+                            <iframe class="d-block w-100" width="800" height="448" marginheight="40"
+                                marginwidth="100" src="" id="tra1" title="YouTube video player"
+                                frameborder="0"></iframe>
+                        </div>
+                        <div class="carousel-item">
+                            <iframe class="d-block w-100" width="800" height="448" marginheight="40"
+                                marginwidth="100" src="" id="tra2" title="YouTube video player"
+                                frameborder="0"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </article>
 
-            <article>
-                <div id="galeriaLivros" class="mt-5 mb-6">
-                    <div class="row">
-                        <% galeria.forEach((item)=>{ %>
+    <article>
+        <div id="galeriaLivros" class="mt-5 mb-6">
+            <div class="row">
+                <% galeria.forEach((item)=>{ %>
+                    <div class="col-sm-6">
+                        <h3 class="text-capitalize">
+                            <%=item.titulo%>
+                        </h3>
+                        <div class="row">
                             <div class="col-sm-6">
-                                <h3>
-                                    <%=item.titulo%>
-                                </h3>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <a href="/single?id=<%=item.filmes_id%>">
-                                            <img src="imgs/<%=item.imagem%>" class="w-100 imagens" />
-                                        </a>
-                                    </div>
-                                    <p class="col-sm-6 text-white">
-                                        <%=item.sinopse.substring(0,200)+"..."%>
-                                    </p>
-
-                                </div>
+                                <a href="/single?id=<%=item.filmes_id%>">
+                                    <img src="imgs/<%=item.imagem%>" class="w-100 imagens" />
+                                </a>
                             </div>
-                            <% }) %>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 mt-5">
-                        <a href="/single?id=<%= galeria[4].filmes_id %>">
-                            <img src="../imgs/filme5.jpeg" class="imagens w-100">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mt-5">
-                        <a href="/single?id=<%= galeria[12].filmes_id %>">
-                            <img src="../imgs/filme13.jpeg" class="imagens w-100">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mt-5">
-                        <a href="/single?id=<%= galeria[6].filmes_id %>">
-                            <img src="../imgs/filme7.jpeg" class="imagens w-100">
-                        </a>
-                    </div>
+                            <p class="col-sm-6 text-white">
+                                <%=item.sinopse.substring(0,200)+"..."%>
+                            </p>
 
-                </div>
-                </div>
-                </div>
-            </article>
-        </section>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </article>
 
-        <!-- <script src="../js/geral.js"></script> -->
-        <script src="../js/produtos.js"></script>
+    <article>
+        <div class="row">
+            <h4 class="col-sm-12">Novos títulos em breve:</h4>
+            <div class="col-sm-4 mt-5">
+                <a href="/single?id=<%= galeria[4].filmes_id %>">
+                    <img src="../imgs/filme5.jpeg" class="imagens w-100">
+                </a>
+            </div>
+            <div class="col-sm-4 mt-5">
+                <a href="/single?id=<%= galeria[12].filmes_id %>">
+                    <img src="../imgs/filme13.jpeg" class="imagens w-100">
+                </a>
+            </div>
+            <div class="col-sm-4 mt-5">
+                <a href="/single?id=<%= galeria[6].filmes_id %>">
+                    <img src="../imgs/filme7.jpeg" class="imagens w-100">
+                </a>
+            </div>
 
-        <%- include ('footer') %>
+        </div>
+    </article>
+
+</section>
+
+<!-- <script src="../js/geral.js"></script> -->
+<script src="../js/produtos.js"></script>
+
+<%- include ('footer') %>
