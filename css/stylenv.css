@@ -1,0 +1,149 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+nav .btn{
+    width: 11rem;
+}
+
+.imagens{
+    border-radius: 1rem;
+    height: 100%;
+}
+
+.imagensIndex{
+    border-radius: 1rem;
+    height: 24rem;
+}
+
+.fundo-escuro {
+    background-image: linear-gradient(to bottom, transparent, black);
+    height: 30rem;
+    width: 22rem;
+    position: absolute;
+    top: 0;
+    border-radius: 1rem;
+    opacity: 0;
+    transition: .5s;
+}
+
+.fundo-escuro:hover{
+    opacity: 1;
+}
+
+/* slider produtos */
+.carousel-indicators{
+    bottom: -1rem !important;
+}
+
+.carousel-indicators li{
+    height: 10px !important;
+    width: 10px !important;
+    border-radius: 50%;
+
+}
+
+/* carrinho  */
+.imagemCarrinho{
+    border-radius: 5%;
+    border:1px solid red;
+}
+
+.resumoPedido{
+    border: 1px solid #fff;
+    border-radius: 13px;
+    background-color: rgb(45, 45, 45);
+}
+
+
+/* single  */
+
+.iframeSingle{
+    border-radius: 2rem;
+    box-shadow: 0 0 .4rem red;
+}
+
+/* compartilhamento */
+
+.share-options{
+    position: absolute;
+    bottom: -3rem;
+    right: 11.7rem;
+    width: auto;
+    height: auto;
+    transform-origin: left center;
+    transform: scale(0);
+    border-radius: 1rem;
+    background-color: white;
+    color: #000;
+    padding: 20px;
+    transition: .5s;
+    z-index: 1;
+}
+
+.share-options.active{
+    transform: scale(1);
+}
+
+.title{
+    opacity: 0;
+    transition: .5s;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    width: fit-content;
+    padding: 0 20px 3px 0;
+}
+
+.social-media{
+    opacity: 0;
+    transition: .5s;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.social-media-btn{
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.social-media-btn:nth-child(1){
+    background: #25D366;
+}
+
+.social-media-btn:nth-child(2){
+    background: #1DA1F2;
+}
+
+.social-media-btn:nth-child(3){
+    background: #1877F2;
+    cursor: not-allowed !important;
+}
+
+
+.share-options.active .title, .share-options.active .social-media, .share-options.active {
+    opacity: 1;
+    transition: .5s;
+}
+
+
+/* footer */
+
+.rodape{
+    background-color: #161616;
+    /* border-radius: 1rem; */
+}
+
+.rodape .icons{
+    font-size: 2rem;
+}
