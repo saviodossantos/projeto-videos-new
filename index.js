@@ -68,6 +68,10 @@
       res.render(`login`)
    })
 
+   app.get("/new-version/login-new", async (req, res) => {
+      res.render(`login-new`)
+   })
+
 
    app.post("/login", async (req, res) => {
       const { email, senha } = req.body
@@ -91,6 +95,13 @@
 
    app.get("/", async (req, res) => {
       res.render(`index`, {
+         filmes: consulta,
+         galeria: consultaFilmes
+      })
+   })
+
+   app.get("/new-version/", async (req, res) => {
+      res.render(`index-new`, {
          filmes: consulta,
          galeria: consultaFilmes
       })
@@ -124,6 +135,18 @@
       const consultaSingle = await db.selectSingle(q.id)
       const consultaInit = await db.selectSingle(4)
       res.render(`cadastro`, {
+         filme: consulta,
+         galeria: consultaInit
+      })
+   })
+
+   app.get("/new-version/cadastro-new", async (req, res) => {
+      let infoUrl = req.url
+      let urlProp = url.parse(infoUrl, true)
+      let q = urlProp.query
+      const consultaSingle = await db.selectSingle(q.id)
+      const consultaInit = await db.selectSingle(4)
+      res.render(`cadastro-new`, {
          filme: consulta,
          galeria: consultaInit
       })
