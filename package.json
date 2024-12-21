@@ -3,18 +3,17 @@
     "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "express-mysql-session": "^2.1.8",
+    "express-mysql-session": "^3.0.3",
     "express-session": "^1.17.3",
     "jquery": "^3.6.0",
-    "mysql2": "^3.10.0",
-    "nodemon": "^2.0.22"
+    "mysql2": "^3.10.0"
   },
   "name": "projeto-videos-new",
   "description": "Projeto do Grupo 1 (Squad One) do programa Impulso Tec",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^3.1.9"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
