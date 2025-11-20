@@ -1,15 +1,13 @@
 // index_ejs
 
 (async () => {
-
-   const { application } = require('express')
    const express = require('express')
    const app = express()
    const db = require("./db/db")
    const bodyParser = require("body-parser")
    const session = require("express-session")
    const mysqlSession = require("express-mysql-session")(session)
-   const url = require("url")
+   const url = require("node:url")
    const port = 3000
 
    app.set("view engine", "ejs")
@@ -37,32 +35,32 @@
    await db.makeSession(app, options, session)
 
    function checkFirst(req, res, next) {
-      if (!req.session.userInfo) {
-         res.redirect('admin/login-admin');
-      } else {
+      if (req.session.userInfo) {
          next();
+      } else {
+         res.redirect('admin/login-admin');
       }
    }
 
    function checkAuth(req, res, next) {
-      if (!req.session.userInfo) {
-         res.send('Você não está autorizado para acessar esta página');
-      } else {
+      if (req.session.userInfo) {
          next();
+      } else {
+         res.send('Você não está autorizado para acessar esta página');
       }
    }
 
-   var userInfo = ''
+   let userInfo = ''
    app.locals.info = {
       user: userInfo
    }
 
    const consulta = await db.selectFilmes()
    const deleteItemCarrinho = await db.deleteItemCarrinho()
-   consultaFilmes = await db.selectFilmes()
-   consultaContato = await db.selectContato()
-   consultaUsuarios = await db.selectUsuarios()
-   consultaProdutos = await db.selectProdutos()
+   const consultaFilmes = await db.selectFilmes()
+   const consultaContato = await db.selectContato()
+   const consultaUsuarios = await db.selectUsuarios()
+   const consultaProdutos = await db.selectProdutos()
 
    app.get("/login", async (req, res) => {
       res.render(`login`)
@@ -76,13 +74,13 @@
    app.post("/login", async (req, res) => {
       const { email, senha } = req.body
       const logado = await db.selectUsers(email, senha)
-      if (logado != "") {
+      if (logado == "") {
+         res.render(`erro`)
+      } else {
          req.session.userInfo = [email]
          userInfo = req.session.userInfo
          req.app.locals.info.user = userInfo
          res.redirect('/')
-      } else {
-         res.render(`erro`)
       }
    })
 
@@ -213,7 +211,7 @@
    app.get("/upd-promo", (req, res) => {
       res.render(`admin/atualiza-promocoes`, {
          filmes: consulta,
-         filmes: consultaFilmes
+         consultaFilmes: consultaFilmes
       })
    })
 
@@ -261,12 +259,14 @@
    app.post("/admin/login-admin", async (req, res) => {
       const { email, senha } = req.body
       const logado = await db.selectAdm(email, senha)
-      if (logado != "") {
+      if (logado == "") {
+         res.render(`admin/erroadm`) 
+      } else { 
          req.session.userInfo = email
          userInfo = req.session.userInfo
          req.app.locals.info.user = userInfo
          res.redirect('/admin')
-      } else { res.render(`admin/erroadm`) }
+      }
    })
 
    app.use('/admin/logout-admin', function (req, res) {
@@ -277,7 +277,7 @@
    })
 
    app.get("/admin/relatorio-chamadas", async (req, res) => {
-      consultaContato = await db.selectContato()
+      let consultaContato = await db.selectContato()
       res.render(`admin/relatorio-chamadas`, {
          contato: consultaContato
       })
