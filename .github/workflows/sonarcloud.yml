@@ -30,11 +30,9 @@ name: SonarCloud analysis
 
 on:
   push:
-    branches: [ "svtest" ]
-    # branches: [ "master", "develop", "feature/*" ]
+    branches: [ "master", "develop", "feature/*" ]
   pull_request:
-    branches: [ "svtest" ]
-    # branches: [ "master" ]
+    branches: [ "master" ]
   workflow_dispatch:
 
 permissions:
