@@ -1,5 +1,5 @@
 //Evento de clique no botão confirmar
-var formL = document.forms.formLogin
+let formL = document.forms.formLogin
 //acesso ao formcontato para variavel formC
 document.querySelector("#btLogin").onclick = function () {
     //alert('TENTE NOVAMENTE')

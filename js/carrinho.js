@@ -22,8 +22,8 @@ let totalProdutos = document.querySelector("#totalProdutos")
 let valor = document.querySelector("#valorTotal")
 let conteudoCarrinho = document.querySelector("#conteudoCarrinho")
 
-for (i = 0; i < carrinhoJSON.produto.length; i++) {
-    var tr = document.createElement('tr')
+for (let i = 0; i < carrinhoJSON.produto.length; i++) {
+    let tr = document.createElement('tr')
     tr.id = "produto" + i
 
     tr.innerHTML += '<td style="vertical-align:unset;"><img class="w-50 m-1 imagemCarrinho" src="../imgs/' + carrinhoJSON.produto[i] + '.jpeg"><p class="font-italic">' + carrinhoJSON.nome[i] + '</p></td>'
@@ -47,7 +47,7 @@ for (i = 0; i < carrinhoJSON.produto.length; i++) {
 let totalCarrinho = document.querySelector("#totalCarrinho")
 let totalItens = document.querySelector("#totalItens")
 let totalItensResult = document.querySelector("#totalItensResult")
-var p = document.createElement("p")
+let p = document.createElement("p")
 
 totalCarrinho.className = "pt-3 pb-3 pl-4 pr-4 justify-content-between d-flex "
 totalCarrinho.style.border = "1px solid white"
@@ -65,7 +65,7 @@ limparCarrinho.onclick = function () {
 
     if (carrinhoJSON.produto.length > 0 && carrinhoVazio.style.display == "none") {
 
-        for (var i = 0; i < carrinhoJSON.produto.length; i++) {
+        for (let element of carrinhoJSON.produto) {
             document.querySelector("#conteudoCarrinho").innerHTML = ""
 
             carrinhoJSON.produto.shift()
@@ -84,10 +84,10 @@ limparCarrinho.onclick = function () {
 }
 
 //cupom de desconto ======================================================
-var Cupom20 = 123
-var Cupom10 = "456"
-var DESCONTO1 = ("20")
-var DESCONTO2 = ("10")
+let Cupom20 = 123
+let Cupom10 = "456"
+let DESCONTO1 = ("20")
+let DESCONTO2 = ("10")
 
 let cupom = document.querySelector("#cupom")
 
@@ -99,12 +99,12 @@ totalDesconto2.style.display = "none"
 let valor1 = document.querySelector("#TOTAL") // Cupom20
 let valor2 = document.querySelector("#TOTAL2") // Cupom10
 
-var PORCENTAGEM = parseInt((valorTotal * DESCONTO1) / 100);
-var TOTAL = parseInt((valorTotal - PORCENTAGEM))
+let PORCENTAGEM = Number.parseInt((valorTotal * DESCONTO1) / 100);
+let TOTAL = Number.parseInt((valorTotal - PORCENTAGEM))
 valor1.innerHTML = TOTAL
 
-var PORCENTAGEM2 = parseInt((valorTotal * DESCONTO2) / 100);
-var TOTAL2 = parseInt((valorTotal - PORCENTAGEM2))
+let PORCENTAGEM2 = Number.parseInt((valorTotal * DESCONTO2) / 100);
+let TOTAL2 = Number.parseInt((valorTotal - PORCENTAGEM2))
 valor2.innerHTML = TOTAL2
 
 // calcular cupom ======================================================
@@ -129,7 +129,7 @@ document.querySelector("#calcularCupom").onclick = function () {
 
 
 // excluir produto ======================================================
-for (i = 0; i < carrinhoJSON.produto.length; i++) {
+for (let i = 0; i < carrinhoJSON.produto.length; i++) {
     let excluirProduto = document.querySelector("#excluirProduto" + carrinhoJSON.produto[i])
     let tr = document.querySelector("#produto" + i)
 
@@ -153,8 +153,8 @@ for (i = 0; i < carrinhoJSON.produto.length; i++) {
 
 //calcular porcentagem ======================================================
 function calcularPorcentagem() {
-    for (i = 0; i < carrinhoJSON.produto.length; i++) {
-        let qtdTelas = document.querySelector("#qtdTelas" + carrinhoJSON.produto[i])
+    for (let element of carrinhoJSON.produto) {
+        let qtdTelas = document.querySelector("#qtdTelas" + element)
         // let qtdTelasValue = document.querySelector(qtdTelas.value)
 
         let percent = 0.07
@@ -187,13 +187,13 @@ function q(el){
 
 
  function calcularCarrinho() {
-     valorTotal = parseFloat(q("#preco" + carrinhoJSON.produto[0]).innerHTML) + parseFloat(q("#preco" + carrinhoJSON.produto[1]).innerHTML) + parseFloat(q("#preco" + carrinhoJSON.produto[2]).innerHTML)
+     let valorTotal = Number.parseFloat(q("#preco" + carrinhoJSON.produto[0]).innerHTML) + Number.parseFloat(q("#preco" + carrinhoJSON.produto[1]).innerHTML) + Number.parseFloat(q("#preco" + carrinhoJSON.produto[2]).innerHTML)
 
      valor.innerHTML = valorTotal
  }
 
  function alteraCarrinho() {
-     q("#preco" + carrinhoJSON.produto[0]).innerHTML = (parseFloat(q("#preco" + carrinhoJSON.produto[0]).innerHTML) * q("#qtdTelas" + carrinhoJSON.produto[0]).value)
+     q("#preco" + carrinhoJSON.produto[0]).innerHTML = (Number.parseFloat(q("#preco" + carrinhoJSON.produto[0]).innerHTML) * q("#qtdTelas" + carrinhoJSON.produto[0]).value)
 
      calcularCarrinho();
  }

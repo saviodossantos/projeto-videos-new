@@ -1,4 +1,4 @@
-var formC = document.forms.formContato
+let formC = document.forms.formContato
 
 document.querySelector("#btContato").onclick=function(){
     
@@ -15,7 +15,7 @@ if(formC.nomeContato.value == ""){
 }else{
     formC.submit()
 
-    let idChamada=parseInt(Math.random()*900) + 100
+    let idChamada=Number.parseInt(Math.random()*900) + 100
     localStorage.setItem('chamada-'+11 +idChamada,formC.nomeContato.value + ',' + formC.emailContato.value + ',' + formC.telefoneContato.value + ',' + formC.assuntoContato.value + ',' + formC.comentContato.value)
 }
 }

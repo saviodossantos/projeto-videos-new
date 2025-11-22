@@ -1,4 +1,4 @@
-const { builtinModules } = require("module")
+const { builtinModules } = require("node:module")
 const session = require("express-session")
 const mysqlSession = require("express-mysql-session")(session)
 
@@ -26,7 +26,7 @@ async function conecta() {
         password: "",
         database: "projeto_videos_new"
     })
-    global.connection = conn
+    globalThis.connection = conn
     return connection
 }
 
@@ -155,9 +155,9 @@ async function selectUsuarios() {
     return rows
 }
 
-async function updateProduto(titulo, genero, Ano, sinopse, imagem, promo, valor, trailer, id) {
+async function updateProduto(titulo, genero, Ano, sinopse, imagem, trailer, id) {
     const conectado = await conecta();
-    const values = [titulo, genero, Ano, sinopse, imagem, promo, valor, trailer, id]
+    const values = [titulo, genero, Ano, sinopse, imagem, trailer, id]
     return await conectado.query("UPDATE filmes set titulo = ?,genero = ?,Ano = ?,sinopse = ?,imagem = ?,promo = ?,valor = ?,trailer = ?  Where filmes_id = ?", values)
 }
 
