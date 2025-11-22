@@ -129,26 +129,19 @@ document.querySelector("#calcularCupom").onclick = function () {
 
 
 // excluir produto ======================================================
-for (let i = 0; i < carrinhoJSON.produto.length; i++) {
-    let excluirProduto = document.querySelector("#excluirProduto" + carrinhoJSON.produto[i])
-    let tr = document.querySelector("#produto" + i)
+carrinhoJSON.produto.forEach((produto, index) => {
+    let excluirProduto = document.querySelector("#excluirProduto" + produto);
+    let tr = document.querySelector("#produto" + index);
 
     excluirProduto.onclick = function () {
         if (confirm("Deseja deletar esse produto?")) {
-            if (excluirProduto[i] == tr[i]) {
-                tr.innerHTML = ""
-                totalProdutos.innerHTML = totalProdutos.innerHTML - 1
-                valor.innerHTML = valorTotal - carrinhoJSON.preco[0]
-                totalItensResult.innerHTML = valorTotal - carrinhoJSON.preco[0]
-                
-            }
+            tr.innerHTML = "";
+            totalProdutos.innerHTML = Number(totalProdutos.innerHTML) - 1;
+            valor.innerHTML = valorTotal - carrinhoJSON.preco[index];
+            totalItensResult.innerHTML = valorTotal - carrinhoJSON.preco[index];
         }
-        
-        i--
-        
-    }
-
-}
+    };
+});
 
 
 //calcular porcentagem ======================================================
