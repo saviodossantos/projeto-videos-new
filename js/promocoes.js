@@ -1,4 +1,4 @@
-var Super=[
+let Super=[
     ["Doutor Estranho 2", "filme2.jpeg" , "Em Doutor Estranho no Multiverso da Loucura, após derrotar Dormammu e enfrentar Thanos nos eventos de Vingadores: Ultimato, o Mago Supremo, Stephen Strange (Benedict Cumberbatch), e seu parceiro Wong (Benedict Wong), continuam suas pesquisas sobre a Joia do Tempo. Mas um velho amigo que virou inimigo coloca um ponto final nos seus planos e faz com que Strange desencadeie um mal indescritível, o obrigando a enfrentar uma nova e poderosa ameaça. O longa se conecta com a série do Disney+ WandaVision e tem relação também com Loki. O longa pertence a fase 4 do MCU onde a realidade do universo pode entrar em colapso por causa do mesmo feitiço que trouxe os vilões do Teioso para o mundo dos Vingadores e o Mago Supremo precisará contar com a ajuda de Wanda (Elizabeth Olsen), que vive isolada desde os eventos de WandaVision."," Ação/Aventura",2022], 
 
     ["Batman","filme1.jpeg", "Após dois anos espreitando as ruas como Batman, Bruce Wayne se encontra nas profundezas mais sombrias de Gotham City. Com poucos aliados confiáveis, o vigilante solitário se estabelece como a personificação da vingança para a população."," Ação/Fantasia",2022],
@@ -39,27 +39,26 @@ var Super=[
 
     ["Aquaman","filme20.jpeg","Aquaman se centrará em Aquaman como um governante relutante do reino subaquático da Atlântida, preso entre os habitantes da terra que sempre polupem o globo e seu próprio povo que está pronto para invadir a superfície. Uma segunda variante pode ser encontrada na parte inferior da página: Aquaman é o rei dos sete mares.","2018"," Ação/Aventura",2018,]]
     
-var filmes=document.querySelector("#filmes")
+let filmes=document.querySelector("#filmes")
 
 //logica de iteração para consumo do array
-for(var i=0;i<Super.length;i++){
+for(let element of Super){
    // cria um elemento div
-   var div=document.createElement('div')
+   let div=document.createElement('div')
    //adiciona a classe com espaço 6
-   div.classList.add('col-sm-4')
-   div.classList.add('mt-3')
-   var conteudo=document.createElement('div')
+   div.classList.add('col-sm-4', 'mt-3')
+   let conteudo=document.createElement('div')
    conteudo.className='row'
-   var descricao=Super[i][2].substring(0,100)+'...'
-   var categoria='<p class="text-uppercase">Categoria: ' + Super[i][3] + '</p>'
-   var anoPub='<p>Ano: ' + Super[i][4] + '</p>'
-   var resenha='<div class="col-sm-7">' + categoria + anoPub + '<p>' + descricao + '</p></div>'
+   let descricao=element[2].substring(0,100)+'...'
+   let categoria='<p class="text-uppercase">Categoria: ' + element[3] + '</p>'
+   let anoPub='<p>Ano: ' + element[4] + '</p>'
+   let resenha='<div class="col-sm-7">' + categoria + anoPub + '<p>' + descricao + '</p></div>'
 
     //insere o tag h3 com o titulo
-    conteudo.innerHTML+= '<h3 class="col-sm-12">' + Super[i][0]+ '</h3>'
+    conteudo.innerHTML+= '<h3 class="col-sm-12">' + element[0]+ '</h3>'
     //insere a imagem com 100% dentro de uma div espaço 3
   
-    conteudo.innerHTML+= '<div class="col-sm-5"><a href="single.html"><img src="../imgs/' + Super[i][1]+ '" class="w-100 imagens"/></div>'
+    conteudo.innerHTML+= '<div class="col-sm-5"><a href="single.html"><img src="../imgs/' + element[1]+ '" class="w-100 imagens"/></div>'
 
     //insere o paragrafo com a resenha dentro de uma div espaço 9
     

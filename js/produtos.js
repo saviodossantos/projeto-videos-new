@@ -1,4 +1,4 @@
-var trailerArr0 = [
+let trailerArr0 = [
    'https://www.youtube.com/embed/sNKVwV_IAYA',
    'https://www.youtube.com/embed/yJnzCBt5j1M',
    'https://www.youtube.com/embed/NKYYcobaj9w',
@@ -9,7 +9,7 @@ var trailerArr0 = [
 
 ]
 
-var trailerArr1 = [
+let trailerArr1 = [
    'https://www.youtube.com/embed/LwCBvhyjegk',
    'https://www.youtube.com/embed/A2SjVRziC7M',
    'https://www.youtube.com/embed/NnDGWyfP7q4',
@@ -19,7 +19,7 @@ var trailerArr1 = [
    'https://www.youtube.com/embed/uNAxHLp7wv8'
 ]
 
-var trailerArr2 = [
+let trailerArr2 = [
    'https://www.youtube.com/embed/idU-bx2x1a8',
    'https://www.youtube.com/embed/HJv4LQxbVEA',
    'https://www.youtube.com/embed/aHmDi6CUQ3M',
@@ -31,17 +31,17 @@ var trailerArr2 = [
 
 function carregarImagem() {
    let randfilmes0 = trailerArr0[Math.floor(Math.random() * trailerArr0.length)];
-   var imagem = document.getElementById("tra0")
+   let imagem = document.getElementById("tra0")
    imagem.src = randfilmes0
 }
 function carregarImagem1() {
    let randfilmes1 = trailerArr1[Math.floor(Math.random() * trailerArr1.length)];
-   var imagem = document.getElementById("tra1")
+   let imagem = document.getElementById("tra1")
    imagem.src = randfilmes1
 }
 function carregarImagem2() {
    let randfilmes2 = trailerArr2[Math.floor(Math.random() * trailerArr2.length)];
-   var imagem = document.getElementById("tra2")
+   let imagem = document.getElementById("tra2")
    imagem.src = randfilmes2
 }
 
