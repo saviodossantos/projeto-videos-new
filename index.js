@@ -5,6 +5,7 @@
    const app = express()
    const db = require("./db/db")
    const bodyParser = require("body-parser")
+   const validator = require("validator")
    const session = require("express-session")
    const mysqlSession = require("express-mysql-session")(session)
    const url = require("node:url")
@@ -77,9 +78,8 @@
       if (logado == "") {
          res.render(`erro`)
       } else {
-         req.session.userInfo = [email]
-         userInfo = req.session.userInfo
-         req.app.locals.info.user = userInfo
+         req.session.userInfo = validator.escape(email)
+         req.app.locals.info.user = req.session.userInfo
          res.redirect('/')
       }
    })
