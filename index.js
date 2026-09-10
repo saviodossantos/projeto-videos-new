@@ -7,7 +7,7 @@
    const bodyParser = require("body-parser")
    const validator = require("validator")
    const session = require("express-session")
-   // const mysqlSession = require("express-mysql-session")(session)
+   const mysqlSession = require("express-mysql-session")(session)
    const url = require("node:url")
    const port = 3000
 
