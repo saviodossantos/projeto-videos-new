@@ -1,0 +1,56 @@
+name: Open develop PR
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: open-develop-pr
+  cancel-in-progress: false
+
+jobs:
+  open-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Open PR if none is already open
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const openPullRequests = await github.paginate(
+              github.rest.pulls.list,
+              {
+                owner,
+                repo,
+                state: 'open',
+                base: 'master',
+                head: `${owner}:develop`
+              }
+            );
+
+            if (openPullRequests.length > 0) {
+              core.info('An open develop -> master pull request already exists.');
+              return;
+            }
+
+            const pullRequest = await github.rest.pulls.create({
+              owner,
+              repo,
+              head: 'develop',
+              base: 'master',
+              title: 'Merge develop into master',
+              body: [
+                'This pull request was opened automatically after a new commit was pushed to `develop`.',
+                '',
+                'Please review the changes before merging into `master`.'
+              ].join('\n')
+            });
+
+            core.info(`Created pull request #${pullRequest.data.number}: ${pullRequest.data.html_url}`);
