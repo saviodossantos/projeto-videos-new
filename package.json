@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saviodossantos/projeto-videos-new.git"
+    "url": "git+https://github.com/svzzin/projeto-videos-new.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/saviodossantos/projeto-videos-new/issues"
+    "url": "https://github.com/svzzin/projeto-videos-new/issues"
   },
-  "homepage": "https://github.com/saviodossantos/projeto-videos-new#readme"
+  "homepage": "https://github.com/svzzin/projeto-videos-new#readme"
 }
